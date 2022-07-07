@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MovieCard from "./MovieCard";
 
 const movieData = [
@@ -19,25 +20,35 @@ const movieData = [
 ];
 
 export default function Home() {
+  const [isFun, setIsFun] = useState(false);
+
   return (
     <div className="Home-Wrapper">
       <h1>MovieQueue</h1>
       <h2>Keep track of what to watch next</h2>
+
+      <button onClick={() => setIsFun(!isFun)}>
+        Make it {isFun ? "not fun" : "fun"}!
+      </button>
+
       <div style={{ display: "flex" }}>
         <MovieCard
           title={movieData[0].Title}
           year={movieData[0].Year}
           plot={movieData[0].Plot}
+          isFun={isFun}
         />
         <MovieCard
           title={movieData[1].Title}
           year={movieData[1].Year}
           plot={movieData[1].Plot}
+          isFun={isFun}
         />
         <MovieCard
           title={movieData[2].Title}
           year={movieData[2].Year}
           plot={movieData[2].Plot}
+          isFun={isFun}
         />
       </div>
     </div>
